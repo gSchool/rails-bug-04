@@ -1,4 +1,5 @@
-<%= form_for [@task_list, @task], html: { class: "task-form" } do |f| %>
+
+<%= form_for [@task_list, @task], url: task_list_tasks_path, html: { class: "task-form" } do |f| %>
 
   <h2>Add a Task</h2>
 
