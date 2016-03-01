@@ -11,6 +11,7 @@ class TasksController < ApplicationController
     if @task.save
       redirect_to root_path, notice: "Task was created successfully!"
     else
+      flash[:error] = "Your task could not be Created"
       render :new
     end
   end
