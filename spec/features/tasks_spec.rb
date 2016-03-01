@@ -18,7 +18,16 @@ feature 'Tasks' do
 
     expect(page).to have_content("Something important")
     expect(page).to have_content("Task was created successfully!")
-    expect(page).to have_content("2 days")
+    expect(page).to have_content("1 day")
   end
 
+  scenario 'User goes back to /task_lists/ with an error when not putting in a description' do
+    user = create_user email: "user@example.com"
+    TaskList.create(name: "Work List")
+
+    login(user)
+    click_on "+ Add Task", match: :first
+    click_on "Create Task"
+    expect(current_path).to match('/task_lists/')
+  end
 end
